@@ -1,0 +1,84 @@
+import React, { useState } from "react";
+import "./Login.css";
+import { useNavigate } from "react-router";
+import { db } from "../firebase/firebase"; 
+import { collection, query, where, getDocs } from "firebase/firestore";
+
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [regNumber, setRegNumber] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // New loading state
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true); // Start loading
+
+    try {
+      const q = query(
+        collection(db, "byte'tember"),
+        where("email", "==", email),
+        where("registrationNumber", "==", regNumber)
+      );
+
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        const teamDoc = querySnapshot.docs[0];
+        const teamData = { id: teamDoc.id, ...teamDoc.data() };
+        localStorage.setItem("team", JSON.stringify(teamData));
+        navigate("/problem-statement-selection");
+      } else {
+        setError("Invalid Team Name or Registration Number");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false); // Stop loading
+    }
+  };
+
+  return (
+    <div className="login-page">
+      <form onSubmit={handleLogin} className="login-form">
+        <h1 className="login-title">BYTE'TEMBER</h1>
+
+        <div className="form-group">
+          <label className="form-label">Email</label>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="form-input"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">Registration Number</label>
+          <input
+            type="text"
+            value={regNumber}
+            onChange={(e) => setRegNumber(e.target.value)}
+            className="form-input"
+            placeholder="Enter your reg number"
+            required
+          />
+        </div>
+
+        {error && <p className="form-error">{error}</p>}
+
+        <button type="submit" className="login-button" disabled={loading}>
+  {loading ? <span className="spinner"></span> : null}
+  {loading ? "Logging in..." : "Login"}
+</button>
+      </form>
+    </div>
+  );
+};
+
+export default Login;
