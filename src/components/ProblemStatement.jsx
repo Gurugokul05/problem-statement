@@ -20,17 +20,17 @@ const ProblemStatement = () => {
   const [team, setTeam] = useState(null);
   const navigate = useNavigate();
 
-  // 🔹 Check login & load team from localStorage
+  // Check login & load team from localStorage
   useEffect(() => {
     const savedTeam = localStorage.getItem("team");
     if (!savedTeam) {
-      navigate("/"); // redirect to login
+      navigate("/");
     } else {
       setTeam(JSON.parse(savedTeam));
     }
   }, [navigate]);
 
-  // 🔹 Fetch problems
+  //  Fetch problems
   useEffect(() => {
     const fetchData = async () => {
       if (!team) return;
@@ -66,12 +66,12 @@ const ProblemStatement = () => {
     fetchData();
   }, [team]);
 
-  // 🔹 Pre-submit: just select problem in state
+  //  Pre-submit: just select problem in state
   const handleClick = (problemText) => {
     setSelectedProblem(problemText);
   };
 
-  // 🔹 Submit selection
+  //  Submit selection
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -98,7 +98,7 @@ const ProblemStatement = () => {
     try {
       setLoading(true);
 
-      // 1️⃣ Update problem-statements collection
+      // 1️ Update problem-statements collection
       const problemref = collection(db, "problem-statements");
       const snapshot = await getDocs(problemref);
 
@@ -110,13 +110,13 @@ const ProblemStatement = () => {
       });
       await Promise.all(problemPromises);
 
-      // 2️⃣ Update the team's document in byte'tember
+      // 2️ Update the team's document in byte'tember
       const teamDocRef = doc(db, "byte'tember", team.id);
       await updateDoc(teamDocRef, {
         selectedProblemStatement: selectedProblem,
       });
 
-      // 3️⃣ Update localStorage & state
+      // 3️ Update localStorage & state
       const updatedTeam = {
         ...team,
         selectedProblemStatement: selectedProblem,
