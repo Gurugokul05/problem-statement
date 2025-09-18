@@ -188,7 +188,7 @@ button[type="submit"]:hover {
 /* Spinner itself */
 .spinner {
   border: 8px solid #f3f3f3;   /* Light grey */
-  border-top: 8px solid #4caf50; /* Green */
+  border-top: 8px solid #181a2c; 
   border-radius: 50%;
   width: 60px;
   height: 60px;

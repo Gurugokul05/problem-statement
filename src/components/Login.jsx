@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import "./Login.css";
 import { useNavigate } from "react-router";
 import { db } from "../firebase/firebase"; 
 import { collection, query, where, getDocs } from "firebase/firestore";
+import { Helmet } from "react-helmet";
+import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -43,6 +44,9 @@ const Login = () => {
 
   return (
     <div className="login-page">
+    <Helmet>
+      <title>Login | PixelIT</title>
+    </Helmet>
       <form onSubmit={handleLogin} className="login-form">
         <h1 className="login-title">BYTE'TEMBER</h1>
 

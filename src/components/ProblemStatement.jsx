@@ -6,6 +6,7 @@ import {
   doc,
   query,
   where,
+  getDoc
 } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { Helmet } from "react-helmet";
@@ -16,9 +17,11 @@ import "./ProblemStatement.css";
 const ProblemStatement = () => {
   const [problemStatement, setProblemStatement] = useState([]);
   const [selectedProblem, setSelectedProblem] = useState("");
+  const [selectedProblemId, setSelectedProblemId] = useState("");
   const [loading, setLoading] = useState(true);
   const [team, setTeam] = useState(null);
   const navigate = useNavigate();
+
 
   // Check login & load team from localStorage
   useEffect(() => {
@@ -67,14 +70,16 @@ const ProblemStatement = () => {
   }, [team]);
 
   //  Pre-submit: just select problem in state
-  const handleClick = (problemText) => {
+  const handleClick = (problemid, problemText) => {
+    setSelectedProblemId(problemid);
     setSelectedProblem(problemText);
   };
 
   //  Submit selection
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
+    
     if (!selectedProblem) {
       Swal.fire({
         icon: "warning",
@@ -97,26 +102,25 @@ const ProblemStatement = () => {
 
     try {
       setLoading(true);
-
-      // 1️ Update problem-statements collection
-      const problemref = collection(db, "problem-statements");
-      const snapshot = await getDocs(problemref);
-
-      const problemPromises = snapshot.docs.map((docsnap) => {
-        const updatedDocRef = doc(db, "problem-statements", docsnap.id);
-        return updateDoc(updatedDocRef, {
-          selected: docsnap.data().problem === selectedProblem,
-        });
+const teamname = team.id;
+    const dbproblems = doc(db, "problem-statements",selectedProblemId);
+    const gettingDbProblems = await getDoc(dbproblems);
+    const dbTeams = doc(db,"byte'tember",teamname);
+    const gettingDbTeams = await getDoc(dbTeams);
+    if(gettingDbProblems.exists()){
+      const problemData = gettingDbProblems.data();
+      if(problemData.selected === false){
+        await updateDoc(dbproblems,{
+        selected:true
       });
-      await Promise.all(problemPromises);
-
-      // 2️ Update the team's document in byte'tember
-      const teamDocRef = doc(db, "byte'tember", team.id);
-      await updateDoc(teamDocRef, {
-        selectedProblemStatement: selectedProblem,
+      await updateDoc(dbTeams,{
+        selectedProblemStatement:selectedProblem
       });
-
-      // 3️ Update localStorage & state
+      }
+      else{
+        throw new Error("you are late !! This problem has been selected by another Team.");
+      }
+    }
       const updatedTeam = {
         ...team,
         selectedProblemStatement: selectedProblem,
@@ -129,7 +133,7 @@ const ProblemStatement = () => {
       Swal.fire({
         icon: "success",
         title: "Submitted!",
-        html: `✅ Problem submitted successfully!<br><strong>Team:</strong> ${team?.teamName}<br><strong>Problem:</strong> ${selectedProblem}`,
+        html: `Problem submitted successfully!<br><strong>Team:</strong> ${team?.teamName}<br><strong>Problem:</strong> ${selectedProblem}`,
       });
     } catch (error) {
       setLoading(false);
@@ -137,7 +141,7 @@ const ProblemStatement = () => {
       Swal.fire({
         icon: "error",
         title: "Error!",
-        text: "Something went wrong while submitting. Try again.",
+        text: error,
       });
     }
   };
@@ -159,7 +163,7 @@ const ProblemStatement = () => {
 
       <form className="problem-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <h2 style={{textAlign:"center"}}>Welcome {team?.teamName}</h2>
+          <h2 style={{ textAlign: "center" }}>Welcome {team?.teamName}</h2>
         </div>
 
         <div className="form-group">
@@ -181,7 +185,7 @@ const ProblemStatement = () => {
                     name="problem-statement"
                     value={problem.problem}
                     checked={isSelected}
-                    onChange={() => handleClick(problem.problem)}
+                    onChange={() => handleClick(problem.id, problem.problem)}
                     disabled={isSubmitted && !isSelected}
                   />
                   <span className="problem-text">{problem.problem}</span>
