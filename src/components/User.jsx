@@ -74,7 +74,7 @@ const navigate = useNavigate();
           </div>
           <div id="user-attendence">
             <h1>View attendence</h1>
-            <Button variant="contained" onClick={()=>{navigate("/user/attendence")}} >View</Button>
+            <Button variant="contained" onClick={()=>{navigate("/user/attendance")}} >View</Button>
           </div>
         </div>
         <footer id="user-footer">

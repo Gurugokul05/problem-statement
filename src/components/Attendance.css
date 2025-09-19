@@ -1,0 +1,112 @@
+/* Attendance.css */
+
+/* General layout */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* Use flexbox to push footer to bottom */
+#root, .attendance-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#attendance-header {
+  text-align: center;
+  padding: 20px;
+  background: #4a90e2;
+  color: #fff;
+}
+
+#attendance-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+#attendance-header p {
+  margin: 5px 0 0;
+}
+
+/* Content area grows */
+.attendance-content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Footer styling */
+/* Footer styling */
+#attendance-footer {
+  width: 100%;
+  background-color: #1976d2;
+  color: #fff;
+  padding: 15px 0;
+  font-size: 0.85rem;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.15);
+  margin-top: auto;
+  text-align: center;         /* Remove old border */
+}
+
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+table th {
+  background: #f0f0f0;
+  font-weight: bold;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead {
+    display: none; /* Hide table headers */
+  }
+
+  tr {
+    margin-bottom: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+
+  td {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    margin-right: 10px;
+    color: #555;
+  }
+}
