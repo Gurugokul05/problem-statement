@@ -1,0 +1,159 @@
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+/* Page Containers */
+#terms, #main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+/* Header */
+#user-header {
+  width: 100%;
+  background: linear-gradient(45deg, #1976d2 30%, #2196f3 90%);
+  color: #fff;
+  padding: 20px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  /* The following lines are removed to eliminate border radius
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  */
+}
+
+#user-header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+#user-header p {
+  font-size: 1rem;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+/* Footer */
+#user-footer {
+  width: 100%;
+  background-color: #1976d2;
+  color: #fff;
+  padding: 15px 0;
+  font-size: 0.85rem;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.15);
+  margin-top: auto;
+  text-align: center; /* Center footer content */
+}
+
+/* Terms and Conditions Section */
+#terms-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  margin: 20px;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+#terms-container h1 {
+  color: #d32f2f;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#terms-container ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+}
+
+#terms-container li {
+  background-color: #e3f2fd;
+  border-left: 5px solid #1976d2;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: transform 0.2s;
+}
+
+#terms-container li:hover {
+  transform: translateX(5px);
+}
+
+#terms-container .MuiButton-contained {
+  margin-top: 20px;
+  background-color: #4caf50;
+  color: #fff;
+}
+
+#terms-container .MuiButton-contained:hover {
+  background-color: #388e3c;
+}
+
+/* Main Content Section */
+#main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 20px;
+  width: 90%;
+  max-width: 600px;
+}
+
+#user-mark, #user-problem, #user-attendence {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#user-mark:hover, #user-problem:hover, #user-attendence:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+#user-mark h1, #user-problem h1, #user-attendence h1 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #1976d2;
+}
+
+#user-mark .MuiButton-contained, #user-problem .MuiButton-contained, #user-attendence .MuiButton-contained {
+  background-color: #1976d2;
+  color: #fff;
+  width: 100%;
+  padding: 12px;
+  font-weight: bold;
+}
+
+#user-mark .MuiButton-contained:hover, #user-problem .MuiButton-contained:hover, #user-attendence .MuiButton-contained:hover {
+  background-color: #1565c0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+  #user-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  #terms-container, #main-container {
+    padding: 15px;
+  }
+}

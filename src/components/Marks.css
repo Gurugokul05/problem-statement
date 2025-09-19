@@ -1,0 +1,143 @@
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+/* Page Container */
+#marks-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main Content Wrapper */
+#main-content-wrapper {
+  flex: 1; /* Allows it to grow and fill the space between header and footer */
+  display: flex; /* Enables flexbox for centering */
+  justify-content: center; /* Centers children horizontally */
+  align-items: center; /* Centers children vertically */
+  padding: 20px; /* Adds padding for spacing on smaller screens */
+  box-sizing: border-box;
+}
+
+/* Header */
+#user-header {
+  width: 100%;
+  background: linear-gradient(45deg, #1976d2 30%, #2196f3 90%);
+  color: #fff;
+  padding: 20px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+#user-header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+#user-header p {
+  font-size: 1rem;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+/* Footer */
+#user-footer {
+  width: 100%;
+  background-color: #1976d2;
+  color: #fff;
+  padding: 15px 0;
+  font-size: 0.85rem;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.15);
+  margin-top: auto;
+  text-align: center;
+}
+
+/* Marks Container */
+#marks-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  text-align: left;
+  animation: fadeIn 1s ease-in-out;
+}
+
+#marks-container h1 {
+  font-size: 2rem;
+  color: #1976d2;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+#marks-container h2 {
+  font-size: 1.5rem;
+  color: #555;
+  margin: 15px 0;
+}
+
+#marks-container p {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 10px 0;
+}
+
+#marks-container b {
+  color: #333;
+}
+
+/* Specific styling for total marks */
+#marks-container h1:last-of-type {
+  font-size: 2.5rem;
+  color: #4caf50;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+/* Keyframes for animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+  #user-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  #marks-container {
+    padding: 20px;
+  }
+
+  #marks-container h1 {
+    font-size: 1.5rem;
+  }
+
+  #marks-container h2 {
+    font-size: 1.2rem;
+  }
+
+  #marks-container p {
+    font-size: 1rem;
+  }
+
+  #marks-container h1:last-of-type {
+    font-size: 2rem;
+  }
+}

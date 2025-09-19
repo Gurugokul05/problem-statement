@@ -45,7 +45,7 @@ const Login = () => {
         const teamDoc = querySnapshot.docs[0];
         const teamData = { id: teamDoc.id, ...teamDoc.data() };
         localStorage.setItem("team", JSON.stringify(teamData));
-        navigate("/problem-statement-selection");
+        navigate("/user");
       } else {
         setError("Invalid Team Name or Registration Number");
       }
