@@ -9,6 +9,7 @@ import "./AdminPannel.css";
 const AdminPannel = () => {
   const navigate = useNavigate();
   const [round, setRound] = useState(false);
+  const [att, setAtt] = useState(false);
   const handleRound = () => {
     setRound(true);
   };
@@ -19,8 +20,30 @@ const AdminPannel = () => {
     navigate("/admin-pannel/marks/round-2");
   };
   const handleUpdateAttendence = () => {
-    navigate("/admin-pannel/attendence");
+    // navigate("/admin-pannel/attendance");
+    setAtt(true);
   };
+  const handleAttendance1=()=>{
+    navigate("/admin-pannel/attendance");
+  }
+  const handleAttendance2=()=>{
+    navigate("/admin-pannel/attendance-2");
+  }
+  const handleAttendance3=()=>{
+    navigate("/admin-pannel/attendance-3");
+  }
+  const handleAttendance4=()=>{
+    navigate("/admin-pannel/attendance-4");
+  }
+  const handleAttendance5=()=>{
+    navigate("/admin-pannel/attendance-5");
+  }
+  const handleAttendance6=()=>{
+    navigate("/admin-pannel/attendance-6");
+  }
+  const handleAttendance7=()=>{
+    navigate("/admin-pannel/attendance-7");
+  }
   //   const [teamDetails, setTeamDetails] = useState([]);
   //   useEffect(() => {
   //     const fetchData = async () => {
@@ -64,7 +87,6 @@ const AdminPannel = () => {
           <p>PixelIT X Frames 24</p>
         </header>
         <div id="admin-cards">
-       
           <div id="marks">
             <h1>Round - 1</h1>
             <Button variant="contained" onClick={handleRound1}>
@@ -74,6 +96,69 @@ const AdminPannel = () => {
           <div id="attendence">
             <h1>Round - 2</h1>
             <Button variant="contained" onClick={handleRound2}>
+              GO
+            </Button>
+          </div>
+        </div>
+
+        <footer id="admin-footer">
+          <p>
+            Designed and Developed by <b>PixelIT Web Team</b>
+          </p>
+        </footer>
+      </div>
+    );
+  }
+  if (att) {
+    return (
+      <div id="admin-main-container">
+        <header id="admin-header">
+          <Helmet>
+            <title>Admin Pannel - PixelIT</title>
+          </Helmet>
+          <h1>BYTE'TEMBER</h1>
+          <p>PixelIT X Frames 24</p>
+        </header>
+        <div id="admin-cards">
+          <div id="marks">
+            <h1>Attendance - 1</h1>
+            <Button variant="contained" onClick={handleAttendance1}>
+              GO
+            </Button>
+          </div>
+          <div id="attendence">
+            <h1>Attendance - 2</h1>
+            <Button variant="contained" onClick={handleAttendance2}>
+              GO
+            </Button>
+          </div>
+          <div id="marks">
+            <h1>Attendance - 3</h1>
+            <Button variant="contained" onClick={handleAttendance3}>
+              GO
+            </Button>
+          </div>
+          <div id="attendence">
+            <h1>Attendance - 4</h1>
+            <Button variant="contained" onClick={handleAttendance4}>
+              GO
+            </Button>
+          </div>
+          <div id="marks">
+            <h1>Attendance - 5</h1>
+            <Button variant="contained" onClick={handleAttendance5}>
+              GO
+            </Button>
+          </div>
+          <div id="attendence">
+            <h1>Attendance - 6</h1>
+            <Button variant="contained" onClick={handleAttendance6}>
+              GO
+            </Button>
+          </div>
+          <div id="attendence">
+            <h1>Attendance - 7</h1>
+            <Button variant="contained" onClick={handleAttendance7}>
               GO
             </Button>
           </div>

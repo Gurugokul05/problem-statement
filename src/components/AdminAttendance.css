@@ -1,0 +1,199 @@
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+/* Main Container for the entire page */
+#attendance-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  text-align: center;
+}
+
+/*
+ * These styles are applied to the immediate content wrappers to ensure
+ * they are centered and fill the available space. This is a crucial
+ * adjustment to correctly position the footer.
+ */
+#attendance-container > div {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+/* Header and Footer styles (consistent with other pages) */
+#round1-header {
+  width: 100%;
+  background: linear-gradient(45deg, #1976d2 30%, #2196f3 90%);
+  color: #fff;
+  padding: 20px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+#round1-header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+#round1-header p {
+  font-size: 1rem;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+#round1-footer {
+  width: 100%;
+  background-color: #1976d2;
+  color: #fff;
+  padding: 15px 0;
+  font-size: 0.85rem;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.15);
+  margin-top: auto;
+  text-align: center;
+}
+
+/* Team Selection View */
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  width: 90%;
+}
+
+.team-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.team-card h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1976d2;
+}
+
+.team-card .MuiButton-contained {
+  background-color: #1976d2;
+  color: #fff;
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.team-card .MuiButton-contained:hover {
+  background-color: #1565c0;
+}
+
+/* Attendance Update View */
+.attendance-form {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.attendance-member {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.attendance-member:last-child {
+  border-bottom: none;
+}
+
+.attendance-member p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.attendance-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.attendance-actions .MuiButton-contained,
+.attendance-actions .MuiButton-outlined {
+  border-radius: 20px;
+  padding: 10px 25px;
+  font-weight: bold;
+}
+
+/* Keyframes for animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design for mobile screens */
+@media screen and (max-width: 600px) {
+  #round1-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .team-list {
+    grid-template-columns: 1fr;
+  }
+
+  .team-card {
+    padding: 20px;
+  }
+
+  .attendance-form {
+    padding: 20px;
+  }
+
+  .attendance-member {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .attendance-actions {
+    flex-direction: column;
+  }
+}

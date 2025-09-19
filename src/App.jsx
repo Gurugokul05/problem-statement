@@ -1,4 +1,3 @@
-
 import { Routes, Route } from "react-router";
 import ProblemStatement from "./components/ProblemStatement";
 import Login from "./components/Login";
@@ -8,23 +7,38 @@ import Round2 from "./components/Round2";
 import Attendance from "./components/Attendance";
 import User from "./components/User";
 import Marks from "./components/Marks";
+import AdminAttendance from "./components/AdminAttendance";
+import AdminAttendance2 from "./components/AdminAttendance2";
+import AdminAttendance3 from "./components/AdminAttendance3";
+import AdminAttendance4 from "./components/AdminAttendance4";
+import AdminAttendance5 from "./components/AdminAttendance5";
+import AdminAttendance6 from "./components/AdminAttendance6";
+import AdminAttendance7 from "./components/AdminAttendance7";
 import "./App.css";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Login/>}/>
-      <Route path="/user" element={<User/>}/>
-      <Route path="/user/marks" element={<Marks/>}/>
-      <Route path="/user/attendance" element={<Attendance/>}/>
-      <Route path="/user/problem-statement-selection" element={<ProblemStatement/>}/>
-      <Route path="/admin-pannel" element={<AdminPannel/>}/>
-      <Route path="/admin-pannel" element={<AdminPannel/>}/>
-      <Route path="/admin-pannel" element={<AdminPannel/>}/>
-      <Route path="/admin-pannel/marks/round-1" element={<Round1/>}/>
-      <Route path="/admin-pannel/marks/round-2" element={<Round2/>}/>
-
-      
+      <Route path="/" element={<Login />} />
+      <Route path="/user" element={<User />} />
+      <Route path="/user/marks" element={<Marks />} />
+      <Route path="/user/attendance" element={<Attendance />} />
+      <Route
+        path="/user/problem-statement-selection"
+        element={<ProblemStatement />}
+      />
+      <Route path="/admin-pannel" element={<AdminPannel />} />
+      <Route path="/admin-pannel" element={<AdminPannel />} />
+      <Route path="/admin-pannel" element={<AdminPannel />} />
+      <Route path="/admin-pannel/marks/round-1" element={<Round1 />} />
+      <Route path="/admin-pannel/marks/round-2" element={<Round2 />} />
+      <Route path="/admin-pannel/attendance" element={<AdminAttendance />} />
+      <Route path="/admin-pannel/attendance-2" element={<AdminAttendance2 />} />
+      <Route path="/admin-pannel/attendance-3" element={<AdminAttendance3 />} />
+      <Route path="/admin-pannel/attendance-4" element={<AdminAttendance4 />} />
+      <Route path="/admin-pannel/attendance-5" element={<AdminAttendance5 />} />
+      <Route path="/admin-pannel/attendance-6" element={<AdminAttendance6 />} />
+      <Route path="/admin-pannel/attendance-7" element={<AdminAttendance7 />} />
     </Routes>
   );
 }
