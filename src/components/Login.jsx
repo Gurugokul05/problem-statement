@@ -69,7 +69,7 @@ const Login = () => {
             value={regNumber}
             onChange={(e) => setRegNumber(e.target.value)}
             className="form-input"
-            placeholder="Enter your reg number"
+            placeholder="Enter your Team Lead reg no"
             required
           />
         </div>

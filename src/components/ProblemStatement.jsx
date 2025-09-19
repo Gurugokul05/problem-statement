@@ -118,7 +118,7 @@ const teamname = team.id;
       });
       }
       else{
-        throw new Error("you are late !! This problem has been selected by another Team.");
+        throw new Error("You are late !! This problem has been selected by another Team.");
       }
     }
       const updatedTeam = {
@@ -140,7 +140,7 @@ const teamname = team.id;
       console.error("Error submitting problem:", error);
       Swal.fire({
         icon: "error",
-        title: "Error!",
+        title: "Late",
         text: error,
       });
     }
