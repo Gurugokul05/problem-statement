@@ -1,0 +1,117 @@
+/* Round1.css */
+
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Main Container */
+#round1-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Header */
+#round1-header {
+  width: 100%;
+  background-color: #1976d2;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#round1-header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+#round1-header p {
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* Content */
+#round1-content {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#round1-content h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Team Card */
+.round1-team-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.round1-team-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Buttons */
+.MuiButton-contained {
+  background-color: #1976d2;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.MuiButton-contained:hover {
+  background-color: #1565c0;
+}
+
+/* Footer */
+#round1-footer {
+  width: 100%;
+  background-color: #1565c0;
+  color: #fff;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 0.8rem;
+  box-shadow: 0 -4px 8px rgba(0,0,0,0.2);
+  margin-top: auto;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  #round1-content {
+    padding: 15px;
+  }
+
+  .round1-team-card {
+    width: 90%;
+    padding: 15px;
+  }
+
+  #round1-header h1 {
+    font-size: 1.5rem;
+  }
+
+  #round1-header p {
+    font-size: 0.8rem;
+  }
+
+  #round1-content h2 {
+    font-size: 1.2rem;
+  }
+}

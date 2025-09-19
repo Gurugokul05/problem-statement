@@ -1,3 +1,123 @@
-#admin-team-container{
-    border: 1px solid black;
+/* AdminPannel.css */
+
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Main Container */
+#admin-main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header */
+#admin-header {
+  width: 100%;
+  background-color: #1976d2; /* distinct blue */
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* subtle shadow */
+}
+
+#admin-header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+#admin-header p {
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* Cards Container */
+#admin-cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Individual Card */
+#marks, #attendence {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 25px 20px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* added box shadow */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#marks:hover, #attendence:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+#marks h1, #attendence h1 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* MUI Button */
+.MuiButton-contained {
+  background-color: #1976d2;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.MuiButton-contained:hover {
+  background-color: #1565c0;
+}
+
+/* Footer */
+#admin-footer {
+  width: 100%;
+  background-color: #1565c0; /* slightly darker blue */
+  color: #fff;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 0.8rem;
+  box-shadow: 0 -4px 8px rgba(0,0,0,0.2); /* subtle shadow */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  #admin-cards {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #marks, #attendence {
+    width: 90%;
+    max-width: 300px;
+    padding: 20px;
+  }
+
+  #admin-header h1 {
+    font-size: 1.5rem;
+  }
+
+  #admin-header p {
+    font-size: 0.8rem;
+  }
 }
