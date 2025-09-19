@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { db } from "../firebase/firebase"; 
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs, getDoc ,doc} from "firebase/firestore";
 import { Helmet } from "react-helmet";
 import "./Login.css";
 
@@ -24,6 +24,21 @@ const Login = () => {
         where("registrationNumber", "==", regNumber)
       );
 
+      //get the admin email and password and first check the admin and then check the user
+      // const adminCheck = query(
+      //   collection(db,"pixelit-core-members-login"),
+      //   where("email","==",email),
+      //   where("password","==",regNumber)
+      // )
+      // const getAdmin = await getDocs(adminCheck);
+      const adminCheck = doc(db,"pixelit-core-members-login","admin");
+      const gettingAdminDetails = await getDoc(adminCheck);
+      if(gettingAdminDetails.exists()){
+        const adminDetails = gettingAdminDetails.data();
+        if(adminDetails.email == email && adminDetails.password == regNumber){
+          navigate("/admin-pannel")
+        }
+      }
       const querySnapshot = await getDocs(q);
 
       if (!querySnapshot.empty) {
