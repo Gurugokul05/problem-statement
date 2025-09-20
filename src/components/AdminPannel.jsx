@@ -23,22 +23,22 @@ const AdminPannel = () => {
     // navigate("/admin-pannel/attendance");
     setAtt(true);
   };
-  const handleAttendance1=()=>{
+  const handleAttendance1 = () => {
     navigate("/admin-pannel/attendance");
-  }
-  const handleAttendance2=()=>{
+  };
+  const handleAttendance2 = () => {
     navigate("/admin-pannel/attendance-2");
-  }
-  const handleAttendance3=()=>{
+  };
+  const handleAttendance3 = () => {
     navigate("/admin-pannel/attendance-3");
-  }
-  const handleAttendance4=()=>{
+  };
+  const handleAttendance4 = () => {
     navigate("/admin-pannel/attendance-4");
-  }
-  const handleAttendance5=()=>{
+  };
+  const handleAttendance5 = () => {
     navigate("/admin-pannel/attendance-5");
-  }
-  
+  };
+
   //   const [teamDetails, setTeamDetails] = useState([]);
   //   useEffect(() => {
   //     const fetchData = async () => {
@@ -145,8 +145,6 @@ const AdminPannel = () => {
               GO
             </Button>
           </div>
-          
-          
         </div>
 
         <footer id="admin-footer">
