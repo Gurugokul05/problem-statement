@@ -19,6 +19,7 @@ const ProblemStatement = () => {
   const [selectedProblem, setSelectedProblem] = useState("");
   const [selectedProblemId, setSelectedProblemId] = useState("");
   const [loading, setLoading] = useState(true);
+  const [off,setOff] = useState(true);
   const [team, setTeam] = useState(null);
   const navigate = useNavigate();
 
@@ -152,60 +153,92 @@ const ProblemStatement = () => {
       </div>
     );
   }
+  if (off) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100px",
+          backgroundColor: "#f8f9fa",
+          border: "1px solid #dee2e6",
+          borderRadius: "8px",
+          margin: "20px",
+          padding: "10px",
+        }}
+      >
+        <h1
+          style={{
+            textAlign: "center",
+            color: "#343a40",
+            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            fontSize: "22px",
+            fontWeight: "600",
+            margin: 0,
+          }}
+        >
+          The time for choosing Problem Statement is over
+        </h1>
+      </div>
+    );
+  } else {
+    return (
+      <div className="problem-container">
+        <header id="user-header">
+          <Helmet>
+            <title>PixelIT - Problem Statement Selection</title>
+          </Helmet>
+          <h1>BYTE'TEMBER</h1>
+          <p>PixelIT X Frames 24</p>
+        </header>
 
-  return (
-    <div className="problem-container">
-      <header id="user-header">
-        <Helmet>
-          <title>PixelIT - Problem Statement Selection</title>
-        </Helmet>
-        <h1>BYTE'TEMBER</h1>
-        <p>PixelIT X Frames 24</p>
-      </header>
-
-      <form className="problem-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <h2 style={{ textAlign: "center" }}>Welcome {team?.teamName}</h2>
-        </div>
-
-        <div className="form-group">
-          <label>Select your Problem Statement</label>
-          <div className="cards-container">
-            {problemStatement.map((problem, index) => {
-              const isSelected = selectedProblem === problem.problem;
-              const isSubmitted = !!team?.selectedProblemStatement;
-
-              return (
-                <label
-                  key={problem.id || index}
-                  className={`problem-card ${isSelected ? "selected" : ""} ${
-                    isSubmitted && !isSelected ? "disabled" : ""
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    name="problem-statement"
-                    value={problem.problem}
-                    checked={isSelected}
-                    onChange={() => handleClick(problem.id, problem.problem)}
-                    disabled={isSubmitted && !isSelected}
-                  />
-                  <span className="problem-text">{problem.problem}</span>
-                </label>
-              );
-            })}
+        <form className="problem-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <h2 style={{ textAlign: "center" }}>Welcome {team?.teamName}</h2>
           </div>
-        </div>
 
-        {!team?.selectedProblemStatement && (
-          <button type="submit" style={{marginBottom:"10px"}}>Submit</button>
-        )}
-      </form>
-      <footer id="user-footer">
-        <p>Designed and developed by PixelIT Web Team</p>
-      </footer>
-    </div>
-  );
+          <div className="form-group">
+            <label>Select your Problem Statement</label>
+            <div className="cards-container">
+              {problemStatement.map((problem, index) => {
+                const isSelected = selectedProblem === problem.problem;
+                const isSubmitted = !!team?.selectedProblemStatement;
+
+                return (
+                  <label
+                    key={problem.id || index}
+                    className={`problem-card ${isSelected ? "selected" : ""} ${
+                      isSubmitted && !isSelected ? "disabled" : ""
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="problem-statement"
+                      value={problem.problem}
+                      checked={isSelected}
+                      onChange={() => handleClick(problem.id, problem.problem)}
+                      disabled={isSubmitted && !isSelected}
+                    />
+                    <span className="problem-text">{problem.problem}</span>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+
+          {!team?.selectedProblemStatement && (
+            <button type="submit" style={{ marginBottom: "10px" }}>
+              Submit
+            </button>
+          )}
+        </form>
+        <footer id="user-footer">
+          <p>Designed and developed by PixelIT Web Team</p>
+        </footer>
+      </div>
+    );
+  }
 };
 
 export default ProblemStatement;
