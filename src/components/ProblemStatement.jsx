@@ -18,8 +18,13 @@ const ProblemStatement = () => {
   const [problemStatement, setProblemStatement] = useState([]);
   const [selectedProblem, setSelectedProblem] = useState("");
   const [selectedProblemId, setSelectedProblemId] = useState("");
+  const [
+    displaySelectedProbelemStatement,
+    setDisplaySelectedProbelemStatement,
+  ] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [off,setOff] = useState(true);
+  const [off, setOff] = useState(false);
   const [team, setTeam] = useState(null);
   const navigate = useNavigate();
 
@@ -40,18 +45,19 @@ const ProblemStatement = () => {
 
       // If team already submitted, just show the selection
       if (team.selectedProblemStatement) {
+        const selectedStatement = team.selectedProblemStatement;
+        setDisplaySelectedProbelemStatement(selectedStatement);
         setSelectedProblem(team.selectedProblemStatement);
-        setLoading(false);
-
+        setSelectedStatus(true);
         // Fetch all problems for display (disabled state)
-        const problemref = collection(db, "problem-statements");
-        const snapshot = await getDocs(problemref);
-        const problems = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setProblemStatement(problems);
-        return;
+        // const problemref = collection(db, "problem-statements");
+        // const snapshot = await getDocs(problemref);
+        // const problems = snapshot.docs.map((doc) => ({
+        //   id: doc.id,
+        //   ...doc.data(),
+        // }));
+        // setProblemStatement(problems);
+        // return;
       }
 
       // Otherwise fetch only unselected problems
@@ -68,7 +74,9 @@ const ProblemStatement = () => {
 
     fetchData();
   }, [team]);
-
+  useEffect(() => {
+    console.log(displaySelectedProbelemStatement);
+  }, [displaySelectedProbelemStatement]);
   //  Pre-submit: just select problem in state
   const handleClick = (problemid, problemText) => {
     setSelectedProblemId(problemid);
@@ -180,6 +188,17 @@ const ProblemStatement = () => {
         >
           The time for choosing Problem Statement is over
         </h1>
+      </div>
+    );
+  }
+  if (selectedStatus) {
+    return (
+      <div id="selected-problem-only">
+        <Helmet>
+          <title>PixelIT - Problem Statement Selection</title>
+        </Helmet>
+        <h1>Your selected problem statement : </h1>
+        <p>{displaySelectedProbelemStatement}</p>
       </div>
     );
   } else {
