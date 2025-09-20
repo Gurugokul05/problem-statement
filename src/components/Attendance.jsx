@@ -71,8 +71,7 @@ const Attendance = () => {
                   <th>Attendance 3</th>
                   <th>Attendance 4</th>
                   <th>Attendance 5</th>
-                  <th>Attendance 6</th>
-                  <th>Attendance 7</th>
+                  
                 </tr>
               </thead>
               <tbody>
@@ -84,8 +83,7 @@ const Attendance = () => {
                     <td data-label="Attendance 3">{member.attendance3}</td>
                     <td data-label="Attendance 4">{member.attendance4}</td>
                     <td data-label="Attendance 5">{member.attendance5}</td>
-                    <td data-label="Attendance 6">{member.attendance6}</td>
-                    <td data-label="Attendance 7">{member.attendance7}</td>
+                    
                   </tr>
                 ))}
               </tbody>

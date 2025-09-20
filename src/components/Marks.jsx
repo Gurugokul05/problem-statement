@@ -63,7 +63,7 @@ const Marks = () => {
         {/* New wrapper div */}
         {teamFullData.map((doc, index) => (
           <div key={doc.id} id="marks-container">
-            <h1 key={index}>{doc.teamName}</h1>
+            <h1 >{doc.teamName}</h1>
             <p>
               <b>Selected Problem Statement : </b>
               {doc.selectedProblemStatement}

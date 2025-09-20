@@ -12,8 +12,6 @@ import AdminAttendance2 from "./components/AdminAttendance2";
 import AdminAttendance3 from "./components/AdminAttendance3";
 import AdminAttendance4 from "./components/AdminAttendance4";
 import AdminAttendance5 from "./components/AdminAttendance5";
-import AdminAttendance6 from "./components/AdminAttendance6";
-import AdminAttendance7 from "./components/AdminAttendance7";
 import "./App.css";
 
 function App() {
@@ -37,8 +35,7 @@ function App() {
       <Route path="/admin-pannel/attendance-3" element={<AdminAttendance3 />} />
       <Route path="/admin-pannel/attendance-4" element={<AdminAttendance4 />} />
       <Route path="/admin-pannel/attendance-5" element={<AdminAttendance5 />} />
-      <Route path="/admin-pannel/attendance-6" element={<AdminAttendance6 />} />
-      <Route path="/admin-pannel/attendance-7" element={<AdminAttendance7 />} />
+      
     </Routes>
   );
 }

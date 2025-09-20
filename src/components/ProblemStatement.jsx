@@ -6,7 +6,7 @@ import {
   doc,
   query,
   where,
-  getDoc
+  getDoc,
 } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { Helmet } from "react-helmet";
@@ -21,7 +21,6 @@ const ProblemStatement = () => {
   const [loading, setLoading] = useState(true);
   const [team, setTeam] = useState(null);
   const navigate = useNavigate();
-
 
   // Check login & load team from localStorage
   useEffect(() => {
@@ -78,8 +77,7 @@ const ProblemStatement = () => {
   //  Submit selection
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    
+
     if (!selectedProblem) {
       Swal.fire({
         icon: "warning",
@@ -102,25 +100,26 @@ const ProblemStatement = () => {
 
     try {
       setLoading(true);
-const teamname = team.id;
-    const dbproblems = doc(db, "problem-statements",selectedProblemId);
-    const gettingDbProblems = await getDoc(dbproblems);
-    const dbTeams = doc(db,"byte'tember",teamname);
-    const gettingDbTeams = await getDoc(dbTeams);
-    if(gettingDbProblems.exists()){
-      const problemData = gettingDbProblems.data();
-      if(problemData.selected === false){
-        await updateDoc(dbproblems,{
-        selected:true
-      });
-      await updateDoc(dbTeams,{
-        selectedProblemStatement:selectedProblem
-      });
+      const teamname = team.id;
+      const dbproblems = doc(db, "problem-statements", selectedProblemId);
+      const gettingDbProblems = await getDoc(dbproblems);
+      const dbTeams = doc(db, "byte'tember", teamname);
+      const gettingDbTeams = await getDoc(dbTeams);
+      if (gettingDbProblems.exists()) {
+        const problemData = gettingDbProblems.data();
+        if (problemData.selected === false) {
+          await updateDoc(dbproblems, {
+            selected: true,
+          });
+          await updateDoc(dbTeams, {
+            selectedProblemStatement: selectedProblem,
+          });
+        } else {
+          throw new Error(
+            "You are late !! This problem has been selected by another Team."
+          );
+        }
       }
-      else{
-        throw new Error("You are late !! This problem has been selected by another Team.");
-      }
-    }
       const updatedTeam = {
         ...team,
         selectedProblemStatement: selectedProblem,
@@ -156,10 +155,13 @@ const teamname = team.id;
 
   return (
     <div className="problem-container">
-      <Helmet>
-        <title>PixelIT - Problem Statement Selection</title>
-      </Helmet>
-      <h1>BYTE'TEMBER</h1>
+      <header id="user-header">
+        <Helmet>
+          <title>PixelIT - Problem Statement Selection</title>
+        </Helmet>
+        <h1>BYTE'TEMBER</h1>
+        <p>PixelIT X Frames 24</p>
+      </header>
 
       <form className="problem-form" onSubmit={handleSubmit}>
         <div className="form-group">
@@ -196,9 +198,12 @@ const teamname = team.id;
         </div>
 
         {!team?.selectedProblemStatement && (
-          <button type="submit">Submit</button>
+          <button type="submit" style={{marginBottom:"10px"}}>Submit</button>
         )}
       </form>
+      <footer id="user-footer">
+        <p>Designed and developed by PixelIT Web Team</p>
+      </footer>
     </div>
   );
 };

@@ -38,12 +38,7 @@ const AdminPannel = () => {
   const handleAttendance5=()=>{
     navigate("/admin-pannel/attendance-5");
   }
-  const handleAttendance6=()=>{
-    navigate("/admin-pannel/attendance-6");
-  }
-  const handleAttendance7=()=>{
-    navigate("/admin-pannel/attendance-7");
-  }
+  
   //   const [teamDetails, setTeamDetails] = useState([]);
   //   useEffect(() => {
   //     const fetchData = async () => {
@@ -150,18 +145,8 @@ const AdminPannel = () => {
               GO
             </Button>
           </div>
-          <div id="attendence">
-            <h1>Attendance - 6</h1>
-            <Button variant="contained" onClick={handleAttendance6}>
-              GO
-            </Button>
-          </div>
-          <div id="attendence">
-            <h1>Attendance - 7</h1>
-            <Button variant="contained" onClick={handleAttendance7}>
-              GO
-            </Button>
-          </div>
+          
+          
         </div>
 
         <footer id="admin-footer">
