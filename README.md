@@ -91,7 +91,7 @@ Pixelit Hackathon Website is a web-based application developed to manage hackath
 
 1. Clone the repository  
 ```bash
-git clone https://github.com/your-username/pixelit-hackathon.git
+git clone https://github.com/Gurugokul05/problem-statement.git
 ```
 
 2. Install dependencies  
